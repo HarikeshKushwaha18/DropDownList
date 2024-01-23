@@ -1,0 +1,45 @@
+<html>
+<body>   
+
+<select id="plant" onchange="ChangePlantList()" onclick="myFunction()"> 
+  <!-- <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()"> -->
+  <option value="">Properties</option> 
+  <option value="leaf">Leaf</option> 
+  <option value="stem">Stem</option> 
+   
+</select> 
+
+<select id="plantModel">
+    <option value="">Type</option>
+    <!-- <option value=""><input type="text" name="" id="" placeholder="Create new"></option> -->
+</select> 
+
+<script>
+var PlantObject = {};
+PlantObject['leaf'] = ['aciculate', 'cordate', 'elliptical', 'flabellate', 'hastate', 'lanceolate', 'linear', 'obcordate', 'oblancelate', 'oblong', 'obovate', 'orbiculate', 'ovate', 'reniform', 'rhomboid', 'runcinate', 'sagittate', 'spatulate'];
+PlantObject['stem'] = ['Underground stem', 'Aerial stem', 'subaerial stem'];
+
+
+function ChangePlantList() {
+  var plantList = document.getElementById("plant");
+  var modelList = document.getElementById("plantModel");
+  var selPlant = plantList.options[plantList.selectedIndex].value;
+  while (modelList.options.length) {
+    modelList.remove(0);
+  }
+  var plants = PlantObject[selPlant];
+  if (plants) {
+    var i;
+    for (i = 0; i < plants.length; i++) {
+      var plant = new Option(plants[i], i);
+      modelList.options.add(plant);
+    }
+  }
+} 
+
+
+
+</script>
+
+</body>
+</html>
